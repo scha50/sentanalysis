@@ -32,7 +32,7 @@ TEST_CASES = [
 
 EDGE_CASES = [
     ("", "empty string"),
-    (12345, "non-string input"),
+    (1235, "non-string input"),
 ]
 print("Sentiment Tests")
 for text, expected in TEST_CASES:
