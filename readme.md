@@ -34,7 +34,7 @@ I absolutely love this product, it's amazing | Result: Positive | Expected: Posi
 The service was terrible and the waiter was awful | Result: Negative | Expected: Negative | Passed: True
 The meeting is scheduled on Tuesday.        | Result: Neutral  | Expected: Neutral  | Passed: True
 
---- Edge Case Tests ---
+Edge Case Tests
 empty string      | Error caught: True | Message: Input must not be empty.
 non-string input  | Error caught: True | Message: Input must be a string.
 ```

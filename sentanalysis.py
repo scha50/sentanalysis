@@ -27,15 +27,13 @@ TEST_CASES = [
     ("The meeting is scheduled on Tuesday.", "Neutral"),
     ("I ate a sandwich for lunch.", "Neutral"),
     ("She walked to the store and bought some bread.", "Neutral"),
-    ("The essay was due yesterday.", "Neutral"),
+    ("The essay is about food and science.", "Neutral"),
 ]
-
 
 EDGE_CASES = [
     ("", "empty string"),
     (12345, "non-string input"),
 ]
-
 print("Sentiment Tests")
 for text, expected in TEST_CASES:
     result = analyze_sentiment(text)
@@ -49,59 +47,3 @@ for text, description in EDGE_CASES:
     caught = result["error"] is not None
     print(description + " | Error caught: " + str(caught) + " | Message: " + str(result["error"]))
 
-
-
-# EDGE_CASES = [
-#     ("", None, "empty string"),
-#     (12345, None, "non-string input"),
-# ]
-
-
-# def run_tests():
-#     print("=" * 62)
-#     print("  SENTIMENT ANALYZER — TEST RESULTS")
-#     print("=" * 62)
-#     correct = 0
-#     total = len(TEST_CASES)
-#     print(f"\n{'#':<3} {'Expected':<10} {'Got':<10} {'Polarity':>8}   {'PASS?':<5}  Text")
-#     print("-" * 62)
-
-#     for i, (text, expected) in enumerate(TEST_CASES, 1):
-#         result = analyze_sentiment(text)
-#         got = result["label"]
-#         polarity = result["polarity"]
-#         passed = "✓" if got == expected else "✗"
-#         if got == expected:
-#             correct += 1
-#         short_text = text if len(text) <= 40 else text[:37] + "..."
-#         print(f"{i:<3} {expected:<10} {got:<10} {polarity:>8.4f}   {passed:<5}  {short_text}")
-
-#     print("-" * 62)
-#     print(f"\n  Accuracy: {correct}/{total}  ({correct/total*100:.0f}%)\n")
-
-#     print("=" * 62)
-#     print("  VALIDATION / EDGE-CASE TESTS")
-#     print("=" * 62)
-#     for text, expected_label, description in EDGE_CASES:
-#         result = analyze_sentiment(text)
-#         status = "✓ Error caught" if result["error"] else "✗ Should have errored"
-#         print(f"  [{description}] → {status}: {result['error']}")
-
-#     print()
-#     print("=" * 62)
-#     print("  ANALYSIS OF UNCERTAIN / INCORRECT PREDICTIONS")
-#     print("=" * 62)
-#     print("""
-#   1. "I'm really disappointed with how I did on the test."
-#      Expected: Negative | Result may vary
-#      "Disappointed" scores moderately negative, but surrounding
-#      neutral words can drag the score toward the 0.0 boundary.
-
-#   2. "She walked to the store and bought some bread."
-#      Expected: Neutral | Sometimes flagged slightly Positive
-#      TextBlob occasionally assigns tiny positive polarity to
-#      ordinary action verbs. Our ±0.05 band catches these edge cases.
-# """)
-
-
-# run_tests()
